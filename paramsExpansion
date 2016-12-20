@@ -1,0 +1,8 @@
+#!/bin/bash
+
+random_str="This is my dog"
+
+echo "String length: ${#random_str}"
+echo "Tail from 2nd char: ${random_str:2}"
+echo "Range characters: ${random_str:2:7}"
+echo "Everything after s: ${random_str#*i}"

@@ -1,0 +1,20 @@
+#!/bin/bash
+
+num=0
+
+until [ $num -eq 5 ]; do
+  echo "num is ${num}"
+  # ((++num))
+  let "++num"
+done
+
+while read var1 var2 var3; do
+  printf "var1 is ${var1} \nvar2 is ${var2} \nvar3 is ${var3}\n"
+#pipe data into loop
+done < ./barry_bonds.txt
+
+#for (( i=0; i<=4; i+=1 )); do
+#with arrays
+for i in {0..4}; do
+echo $i
+done

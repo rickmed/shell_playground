@@ -1,0 +1,14 @@
+#!/bin/bash
+
+fullName(){
+  local first=$1
+  local last=$2
+  #return to caller
+  echo "$first $last"
+}
+
+#call it and assign
+first="rick"
+last="medina"
+full=$( fullName "$first" "$last" )
+echo $full

@@ -1,0 +1,22 @@
+#!/bin/bash
+
+echo "2nd argument passed: ${2}"
+echo "relative file path: ${0}"
+echo "Number of args passed: ${#}"
+
+#name args
+# expecting a -t and -f flags with options
+valT=''
+valF=''
+
+while getopts "t:f:" opt; do
+    case $opt in
+        t)  valT="$OPTARG"
+            ;;
+        f)  valF="$OPTARG"
+            ;;
+    esac
+done
+
+echo "-f passed with ${valF}"
+echo "-t passed with ${valT}"

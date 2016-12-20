@@ -1,0 +1,18 @@
+#!/bin/bash
+
+_num1=5
+declare -r CONSTANT=8
+
+echo $((_num1 + CONSTANT))
+sum=$((_num1 + CONSTANT))
+echo $sum
+echo $((sum+=4))
+
+nodeVar=$( node -e "console.log($sum)")
+echo $((++nodeVar))
+
+cat<< END
+This is
+a multiline
+print
+END

@@ -1,0 +1,35 @@
+#!/bin/bash
+
+myArray=(10 40 0.4 "hello" 54.4 "what")
+
+echo ${myArray[@]}
+
+myArray+=("yes" 0.9)
+unset 'myArray[3]'
+
+echo ${myArray[7]}
+
+for x in ${myArray[*]}; do
+  echo $x
+done
+
+echo "Array length is: ${#myArray[@]}"
+echo "5th element length is: ${#myArray[5]}"
+
+echo ${myArray[@]}
+unset myArray[5]
+echo ${myArray[@]}
+unset myArray[6]
+
+echo ${myArray[@]}
+
+arr2=(43 10 13 4)
+
+sorted=($(for x in "${myArray[@]}"; do
+  echo $x;
+done | sort ))
+# or
+#sorted=$( echo ${myArray[@]} | tr " " "\n" | sort)
+
+echo ${sorted[@]}
+

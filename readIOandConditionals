@@ -1,0 +1,24 @@
+#!/bin/bash
+
+read -p "What is your first and last names? " first last
+read -p "What is your age? " age
+read -sp "password? " pw
+
+#if [ $age -ge 18 ]
+if (( $age >= 18 ))
+then
+  echo "$first $last. Your age is "$age", so you can drink. Pw is $pw"
+# -eq or ==
+elif [ $age -eq 17 ]
+then
+  # with parameter expansion: str replacement.
+default="John"
+
+  echo "${first//rick/$default} Your age is $age, so you can drink next year"
+elif (( (( $age < 18 )) && (( $age >11 )) ))
+then 
+  echo "You're a not a child now but still can't drink yet"
+else
+  echo "whatever"
+fi
+
