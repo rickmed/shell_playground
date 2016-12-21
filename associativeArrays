@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# -A declares as associative
+declare -A assArr=( ["cat"]="whisk" ["dog"]="charlie")
+
+# the ! expand the keys instead of values
+for x in ${!assArr[@]}; do
+	echo "$x: ${assArr[$x]}"
+done
+# echo "${!assArr[@]}: ${assArr[@]}"
+# echo ${assArr[@]}

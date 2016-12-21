@@ -1,10 +1,12 @@
 #!/bin/bash
 
+
+
 fullName(){
   local first=$1
   local last=$2
-  #return to caller
-  echo "$first $last"
+  #return to caller. Echo/Print does not work inside functions.
+  echo "first: $first. Last: $last"
 }
 
 #call it and assign
