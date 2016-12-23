@@ -1,0 +1,26 @@
+#!/bin/bash
+histfile=$1
+user=$2
+
+process() { 
+	awk '{$1=""; $2=""; $3=""; print}' | # removes first 3 columns
+	awk '{OFS=RS;$1=$1}1' | #convert spaces to new line
+	awk '!x[$0]++' |   # removes duplicates
+	sort
+}
+
+
+# cat $histfile |
+# 	#FS field separator is an empty line
+# 	awk -v usr="$user" 'BEGIN{ FS="\n"; RS="" } { if ($3 ~ "Requested-By: "usr) print $2 }' \
+# 	| process >&1
+
+
+# this version is more solid.
+cat $(realpath $histfile) |
+	awk -v usr="$user" '/Start/ {if (x ~ "Requested-By: "usr) print x "\n"; x=""}
+		{x=(!x)? $0 : x"\n"$0 }
+		END{ print x}' \
+	| awk 'BEGIN{FS="\n"; RS=""} {print $2}' \
+	| process >&1
+
