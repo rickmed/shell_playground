@@ -16,7 +16,7 @@ process() {
 # 	| process >&1
 
 
-# this version is more solid
+# this version is more solid.
 cat $(realpath $histfile) |
 	awk -v usr="$user" '/Start/ {if (x ~ "Requested-By: "usr) print x "\n"; x=""}
 		{x=(!x)? $0 : x"\n"$0 }
