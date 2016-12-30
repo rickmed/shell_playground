@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# with process substitution 
+( commands ) 2> >( commmands receving stderr) > >(receving stdout)
+
+# if you don't want to see routed stderr printed
+( commands ) 2> >( commmands receving stderr >&2) > >(receving stdout)
+
+
+#alternatively, works on bash not zsh. Disregards stdout. Pipes stderr to commands2
+( commands ) 2>&1 >/dev/null | commands2

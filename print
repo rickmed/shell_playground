@@ -1,0 +1,10 @@
+#!/bin/bash
+
+rscols=(4.5 "b" "c")
+
+printf "%s\t%s\t%s\n" "${rscols[@]}"
+echo "${rscols[@]}" 
+
+# print arrays in the same line with \r
+printf "%s\t%s\t%s\r" "${rscols[@]}"
+echo -ne "${rscols[@]}\r" 

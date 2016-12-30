@@ -3,20 +3,50 @@
 echo "2nd argument passed: ${2}"
 echo "relative file path: ${0}"
 echo "Number of args passed: ${#}"
+echo "All args passed: ${@}"
 
-#name args
-# expecting a -t and -f flags with options
-valT=''
-valF=''
+#using normal
+valF=~/default_value.html
+valI=
+hlp=
+dflt=
 
-while getopts "t:f:" opt; do
-    case $opt in
-        t)  valT="$OPTARG"
-            ;;
-        f)  valF="$OPTARG"
-            ;;
+while [ "$1" != "" ]; do
+    case $1 in
+        -f | --file )           shift
+                                valF=$1
+                                ;;
+        -i | --interactive )    valI=$2
+                                ;;
+        -h | --help )           hlp=2
+                                exit
+                                ;;
+        * )                     dflt=3
+                                exit 1
     esac
+    shift
 done
 
+
 echo "-f passed with ${valF}"
-echo "-t passed with ${valT}"
+echo "-i passed with ${valI}"
+
+
+
+
+# #name args using getopts
+# # expecting a -t and -f flags with options
+# valT=''
+# valF=''
+
+# while getopts "t:f:" opt; do
+#     case $opt in
+#         t)  valT="$OPTARG"
+#             ;;
+#         f)  valF="$OPTARG"
+#             ;;
+#     esac
+# done
+
+# echo "-f passed with ${valF}"
+# echo "-t passed with ${valT}"
